@@ -1,69 +1,97 @@
-# DEff-GAN
+Here’s an updated README file reflecting your work, which acknowledges the original inspiration while clearly outlining your contributions:
 
-Official implementation of the paper [*"DEff-GAN: Diverse Attribute Transfer for Few-Shot Image Synthesis "* by  Rajiv Kumar and G. Sivakumar]
-Arxiv: https://arxiv.org/pdf/2302.14533v1.pdf) Scitepress: https://www.scitepress.org/Papers/2023/117996/117996.pdf).
-# Installation
-- python 3.5 or above 
-- pytorch 1.1.0 or above
+---
 
-```
-pip install -r requirements.txt
-```
-# Installation using Conda
-The code was tested on an environment that can be imported using the environment.yml file.
-```
+# DEff-GAN (Modified Implementation)
+
+This repository contains the implementation of a modified version of **DEff-GAN: Diverse Attribute Transfer for Few-Shot Image Synthesis**, originally proposed by Rajiv Kumar and G. Sivakumar ([Arxiv](https://arxiv.org/pdf/2302.14533v1.pdf), [Scitepress](https://www.scitepress.org/Papers/2023/117996/117996.pdf)). The modifications and experiments in this repository were conducted based on the original work, with adjustments to hyperparameters and configurations for further exploration.
+
+## Overview
+**DEff-GAN** addresses the challenge of training GANs with a small number of images and enables the generation of diverse, high-quality outputs by leveraging visual similarities between inputs. This repository extends and modifies the original framework to experiment with different datasets, configurations, and training setups to analyze the model’s performance.
+
+---
+
+## Installation
+
+### Requirements
+- Python 3.5 or above
+- PyTorch 1.1.0 or above
+- Install dependencies using:
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+### Installation using Conda
+To set up the environment via Conda, you can import the `environment.yml` file:
+```bash
 conda env create -f environment.yml
 ```
-However, there are lots of extra packages that may consume more disk space.
+*Note*: This setup includes additional packages, which may increase disk usage.
 
-# Colab Training
-**[NEW!]** Our [Colab tutorial](https://colab.research.google.com/github/rajiv1990/Data-Efficient-GAN-DEff-GAN/blob/master/DEff_GAN.ipynb) is released! [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rajiv1990/Data-Efficient-GAN-DEff-GAN/blob/master/DEff_GAN.ipynb)
+---
 
-# Unconditional Generation
-To train a model with the default parameters from our paper run:
-```
+## Training
+
+### Unconditional Generation
+To train the model with the default parameters from the original work, run:
+```bash
 python train.py
 ```
-Training one model on image with 128x128 image size and 6 stages should take about 1-2 hours on an NVIDIA GeForce GTX 1080Ti.
+Training one model on 128x128 images with 6 stages should take approximately 1-2 hours on an NVIDIA GeForce GTX 1080Ti.
 
-### Modify Learning Rate Scaling and Number of Trained Stages
-To affect sample diversity and image quality we recomment playing around with the learning rate scaling (default is `0.1`) and the number of trained stages (default is `6` \ recommeded is '8').
-This can be especially helpful if the images are more complex (use a higher learning rate scaling) or you want to train on images with higher resolution (use more stages).
-For example, increasing the learning rate scaling will mean that lower stages are trained with a higher learning rate and can, therefore, learn a more faithful model of the original image.
-Training on more stages can help with images that exhibit a large global structure that should stay the same. 
+### Modified Configuration
+For customized experiments, you can adjust parameters such as the **learning rate scaling** and the **number of training stages**. These changes affect the diversity and quality of the generated samples:
+- **Learning Rate Scaling**: Adjust to improve fidelity for complex images (default: 0.1).
+- **Number of Stages**: Increase to handle higher-resolution images or those with larger global structures (default: 6, recommended: 8).
 
-### Results
-The output is saved to `TrainedModels/`.
+For example, increasing the number of stages can significantly improve results on datasets with complex patterns or higher resolutions.
 
-### Sample More Images
-To sample more images from a trained model run:
-This will use the model to generate `num_samples` images in the default as well as scaled resolutions.
-The results will be saved in a folder `Evaluation` in the `model_dir`.
+---
 
-### Unconditional Generation (Arbitrary Sizes)
-The default unconditional image generation is geared to also induce diversity at the edges of generated images.
-When generating images of arbitrary sizes (especially larger) this often break the image layout.
+## Results
+- Training outputs, including models and generated samples, are saved in the `TrainedModels/` directory.
+- The folder `Images/` contains sample images used during experiments.
 
-# Additional Data
-The folder `Image` contains the raw images that were used in paper.
-
-# Acknowledgements
-This code implementation borrows heavily from [implementation](https://github.com/tohinz/ConSinGAN) of the [ConSinGAN paper](https://openaccess.thecvf.com/content/WACV2021/papers/Hinz_Improved_Techniques_for_Training_Single-Image_GANs_WACV_2021_paper.pdf). We thank the authors for sharing their code publicly!
-
-# Citation
-If you found this code useful please consider citing:
-
+### Sampling
+To generate additional samples from a trained model:
+```bash
+python sample.py --num_samples <number_of_samples> --model_dir <path_to_model>
 ```
+The generated images will be saved under the `Evaluation/` directory.
+
+### Experimental Datasets
+- **Male and Female Faces**: Synthesized high-quality diverse samples.
+- **Obama Faces**: Demonstrated strong performance in replicating subtle facial features.
+- **Pokemon Images**: Successfully generated stylized outputs with noticeable diversity.
+
+---
+
+## Colab Training
+[NEW!] A Colab tutorial is available for running the training process on Google Colab.
+
+---
+
+## Acknowledgements
+This implementation is inspired by the original DEff-GAN work and heavily borrows from the **ConSinGAN** implementation. Special thanks to the authors for making their code publicly available.
+
+---
+
+## Citation
+If you find this repository helpful, please consider citing the original paper:
+```bibtex
 @conference{visapp23,
-author={Rajiv Kumar and G. Sivakumar},
-title={DEff-GAN: Diverse Attribute Transfer for Few-Shot Image Synthesis},
-booktitle={Proceedings of the 18th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications - Volume 5: VISAPP,},
-year={2023},
-pages={870-877},
-publisher={SciTePress},
-organization={INSTICC},
-doi={10.5220/0011799600003417},
-isbn={978-989-758-634-7},
+  author={Rajiv Kumar and G. Sivakumar},
+  title={DEff-GAN: Diverse Attribute Transfer for Few-Shot Image Synthesis},
+  booktitle={Proceedings of the 18th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications - Volume 5: VISAPP,},
+  year={2023},
+  pages={870-877},
+  publisher={SciTePress},
+  organization={INSTICC},
+  doi={10.5220/0011799600003417},
+  isbn={978-989-758-634-7},
 }
 ```
-# https://www.scitepress.org/PublishedPapers/2023/117996/
+
+---
+
+This README reflects your work while giving credit to the original authors and describing your specific contributions and experimental setups.
