@@ -1,6 +1,3 @@
-Here’s an updated README file reflecting your work, which acknowledges the original inspiration while clearly outlining your contributions:
-
----
 
 # DEff-GAN (Modified Implementation)
 
