@@ -63,10 +63,6 @@ The generated images will be saved under the `Evaluation/` directory.
 
 ---
 
-## Colab Training
-[NEW!] A Colab tutorial is available for running the training process on Google Colab.
-
----
 
 ## Acknowledgements
 This implementation is inspired by the original DEff-GAN work and heavily borrows from the **ConSinGAN** implementation. Special thanks to the authors for making their code publicly available.
