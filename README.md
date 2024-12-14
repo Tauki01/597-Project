@@ -65,7 +65,7 @@ The generated images will be saved under the `Evaluation/` directory.
 
 
 ## Acknowledgements
-This implementation is inspired by the original DEff-GAN work and heavily borrows from the ([ConSinGAN](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://openaccess.thecvf.com/content/WACV2021/papers/Hinz_Improved_Techniques_for_Training_Single-Image_GANs_WACV_2021_paper.pdf)) implementation. Special thanks to the authors for making their code publicly available.
+This implementation is inspired by the original DEff-GAN work and heavily borrows from the [ConSinGAN](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://openaccess.thecvf.com/content/WACV2021/papers/Hinz_Improved_Techniques_for_Training_Single-Image_GANs_WACV_2021_paper.pdf)  implementation. Special thanks to the authors for making their code publicly available.
 
 ---
 
